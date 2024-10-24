@@ -1,0 +1,9 @@
+PING 9.46.46.10 (9.46.46.10) 56(84) bytes of data.
+64 bytes from 9.46.46.10: icmp_seq=1 ttl=60 time=84.2 ms
+64 bytes from 9.46.46.10: icmp_seq=2 ttl=60 time=84.1 ms
+64 bytes from 9.46.46.10: icmp_seq=3 ttl=60 time=84.1 ms
+64 bytes from 9.46.46.10: icmp_seq=4 ttl=60 time=84.0 ms
+
+--- 9.46.46.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 34ms
+rtt min/avg/max/mdev = 84.083/84.165/84.221/0.358 ms, pipe 4

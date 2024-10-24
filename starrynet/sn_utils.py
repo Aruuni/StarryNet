@@ -308,7 +308,7 @@ class sn_Link_Init_Thread(threading.Thread):
             '/delay/1.txt', self.file_path + "/1.txt")
         print('Initializing links ...')
         sn_remote_cmd(
-            self.remote_ssh, "python3 " + self.file_path +
+            self.remote_ssh, "python3.8 " + self.file_path +
             "/sn_orchestrater.py" + " " + str(self.orbit_num) + " " +
             str(self.sat_num) + " " + str(self.constellation_size) + " " +
             str(self.fac_num) + " " + str(self.sat_bandwidth) + " " +
@@ -344,7 +344,7 @@ class sn_Routing_Init_Thread(threading.Thread):
             self.file_path + "/sn_orchestrater.py")
         print('Initializing routing ...')
         sn_remote_cmd(
-            self.remote_ssh, "python3 " + self.file_path +
+            self.remote_ssh, "python3.8 " + self.file_path +
             "/sn_orchestrater.py" + " " + str(self.constellation_size) + " " +
             str(self.fac_num) + " " + self.file_path)
         print("Routing initialized!")
@@ -642,7 +642,7 @@ def sn_update_delay(file_path, configuration_file_path, timeptr,
         '.txt', file_path + '/' + str(timeptr) + '.txt')
     sn_remote_cmd(
         remote_ssh,
-        "python3 " + file_path + "/sn_orchestrater.py " + file_path + '/' +
+        "python3.8 " + file_path + "/sn_orchestrater.py " + file_path + '/' +
         str(timeptr) + '.txt ' + str(constellation_size) + " update")
     print("Delay updating done.\n")
 
@@ -665,7 +665,7 @@ def sn_damage(ratio, damage_list, constellation_size, remote_ssh, remote_ftp,
         configuration_file_path + "/" + file_path +
         '/mid_files/damage_list.txt', file_path + "/damage_list.txt")
     sn_remote_cmd(remote_ssh,
-                  "python3 " + file_path + "/sn_orchestrater.py " + file_path)
+                  "python3.8 " + file_path + "/sn_orchestrater.py " + file_path)
     print("Damage done.\n")
 
 
@@ -682,7 +682,7 @@ def sn_recover(damage_list, sat_loss, remote_ssh, remote_ftp, file_path,
         configuration_file_path + "/" + file_path +
         '/mid_files/damage_list.txt', file_path + "/damage_list.txt")
     sn_remote_cmd(
-        remote_ssh, "python3 " + file_path + "/sn_orchestrater.py " +
+        remote_ssh, "python3.8 " + file_path + "/sn_orchestrater.py " +
         file_path + " " + str(sat_loss))
     cumulated_damage_list.clear()
     print("Link recover done.\n")
@@ -759,7 +759,7 @@ def sn_perf(src, des, time_index, constellation_size, container_id_list,
     print("iperf server success")
     perf_result = sn_remote_cmd(
         remote_ssh, "docker exec -i " + str(container_id_list[src - 1]) +
-        " iperf3 -c " + str(des_IP[0][:-1]) + " -t 5 ")
+        " iperf3 -c " + str(des_IP[0][:-1]) + " -J -i 1 -t 180 -N -C bbr ")
     print("iperf client success")
     f = open(
         configuration_file_path + "/" + file_path + "/perf-" + str(src) + "-" +
@@ -902,4 +902,4 @@ class sn_Emulation_Stop_Thread(threading.Thread):
             os.path.join(os.getcwd(), "starrynet/sn_orchestrater.py"),
             self.file_path + "/sn_orchestrater.py")
         sn_remote_cmd(self.remote_ssh,
-                      "python3 " + self.file_path + "/sn_orchestrater.py")
+                      "python3.8 " + self.file_path + "/sn_orchestrater.py")

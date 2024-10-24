@@ -1,0 +1,20 @@
+time 103:
+duration 26:
+add:
+8-48
+del:
+9-48
+time 129:
+duration 68:
+add:
+5-46
+del:
+6-46
+time 197:
+duration 60:
+add:
+5-47
+del:
+6-47
+time 200:
+end of the emulation! 

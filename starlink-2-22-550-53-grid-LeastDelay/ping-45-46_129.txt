@@ -1,0 +1,5 @@
+PING 9.46.46.10 (9.46.46.10) 56(84) bytes of data.
+
+--- 9.46.46.10 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 32ms
+
